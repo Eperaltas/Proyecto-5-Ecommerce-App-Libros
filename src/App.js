@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Menu title="E-libros" />
-        <List />
+        <List items={this.state.books} />
       </div>
     );
   }
