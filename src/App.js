@@ -9,11 +9,11 @@ class App extends React.Component{
     super(props);
     this.state = {
       books:[
-        {id:0, rating: 4, title: 'Harry Potter y el cáliz de fuego', image: 'libro01.jpg'},
-        {id:1, rating: 3, title: 'The shining', image: 'libro02.jpg'},
-        {id:2, rating: 5, title: 'Código Da Vinci', image: 'libro03.jpg'},
-        {id:3, rating: 5, title: 'El principito', image: 'libro04.jpg'},
-        {id:4, rating: 5, title: 'Sobrenatural', image: 'libro05.jpg'}
+        {id:0, rating: 4, title: 'Precio: $630.99', image: 'libro01.jpg'},
+        {id:1, rating: 3, title: 'Precio: $550.99', image: 'libro02.jpg'},
+        {id:2, rating: 5, title: 'Precio: $780.99', image: 'libro03.jpg'},
+        {id:3, rating: 5, title: 'Precio: $390.99', image: 'libro04.jpg'},
+        {id:4, rating: 5, title: 'Precio: $250.99', image: 'libro05.jpg'},
       ],
       copyBooks: []
     };

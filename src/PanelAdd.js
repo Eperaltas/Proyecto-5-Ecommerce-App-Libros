@@ -48,27 +48,37 @@ class PanelAdd extends React.Component{
             <div className="new-item-panel-container">
                 <div className="new-item-panel">
                     <form onSubmit={this.createItem}>
-                        <p>
-                        <label>Título del libro</label><br />
+                    <p>
+                        <label>Nombre completo</label><br />
                         <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
                         </p>
 
                         <p>
-                        <label>Nombre de imagen</label><br />
+                        <label>Apellido Paterno</label><br />
+                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        </p>
+
+                        <p>
+                        <label>Apellido Materno</label><br />
+                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        </p>
+                        
+                        <p>
+                        <label>Correo electrónico</label><br />
+                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        </p>
+
+                        <p>
+                        <label>Crear contraseña</label><br />
                         <input type="text" name="image" className="input" onChange={this.onChangeImage} />
                         </p>
 
                         <p>
-                        <label>Calificación</label><br />
-                        <select onChange={this.onChangeRating}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        <label>Confirmar contraseña</label><br />
+                        <input type="text" name="image" className="input" onChange={this.onChangeImage} />
                         </p>
-                        <input type="submit" className="button btn-blue" value="Registrar libro" />
+
+                        <input type="submit" className="button btn-blue" value="Crear cuenta" />
                         <button className="button btn-normal" onClick={this.props.onhide}>Cancelar</button>
                     </form>
                 </div>
@@ -78,3 +88,14 @@ class PanelAdd extends React.Component{
 }
 
 export default PanelAdd;
+
+/* <p>
+                        <label>Precio</label><br />
+                        <select onChange={this.onChangeRating}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        </p> */

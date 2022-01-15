@@ -50,10 +50,10 @@ class Item extends React.Component{
                 <div className="rating">
                     <p>
                     {this.state.stars.map(x =>
-                        <img src='img/star.png' width='32' />
+                    <img src='' width='' />
                     )}
                     </p>
-                    Calificación: 
+                    Cantidad
                     <select value={this.state.rating} onChange={this.onChangeRating}>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -63,7 +63,7 @@ class Item extends React.Component{
                     </select>
                 </div>
                 <div className="actions">
-                    <button onClick={this.onremove}>Eliminar</button>
+                    <button onClick={this.onremove}>Agregar al carrito</button>
                 </div>
             </div>
         );
