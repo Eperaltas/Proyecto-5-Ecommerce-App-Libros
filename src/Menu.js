@@ -32,11 +32,11 @@ class Menu extends React.Component{
                     </div>
                     <div className="actions">
                         <button onClick={this.add} className="button btn-blue">Crear cuenta</button>
-                        <button onClick={this.add} className="button btn-blue">Carrito</button>
+                        <button onClick={this} className="button btn-blue">Carrito</button>
                     </div>
                 </div>
                 {(this.state.newItemPanel)?
-                 <PanelAdd onhide={this.onCancel} onadd={this.props.onadd} />
+                 <PanelAdd onhide={this.onCancel} onadd={this.props} />
                  : 
                  ''
                  }
@@ -45,8 +45,21 @@ class Menu extends React.Component{
     }
 }
 
+/*     </div>
+                {(this.state.newItemPanel)?
+                 <PanelAdd onhide={this.onCancel} onadd={this.props.onadd} />
+                 : 
+                 ''
+                 }
+            </div>
+            */
+
+/*<button onClick={this.add} className="button btn-blue">Crear cuenta</button> */
+
 /* <button onClick={this} className="button btn-blue">MXN</button> */
+
 /*<img src='img/BanderaMX01.png' width='32' height='20' /> */
+
 /*<img src='img/Carrito.png' width='22'/> */
 
 export default Menu;

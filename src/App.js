@@ -9,7 +9,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       books:[
-        {id:0, rating: 4, title: 'Precio: $630.99', image: 'libro01.jpg'},
+        {id:0, rating: 4, title: 'Harry Potter y el Cáliz de Fuego/$80.00', image: 'libro01.jpg'},
         {id:1, rating: 3, title: 'Precio: $550.99', image: 'libro02.jpg'},
         {id:2, rating: 5, title: 'Precio: $780.99', image: 'libro03.jpg'},
         {id:3, rating: 5, title: 'Precio: $390.99', image: 'libro04.jpg'},
