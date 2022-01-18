@@ -9,11 +9,11 @@ class App extends React.Component{
     super(props);
     this.state = {
       books:[
-        {id:0, rating: 4, title: 'Harry Potter y el Cáliz de Fuego/$80.00', image: 'libro01.jpg'},
-        {id:1, rating: 3, title: 'Precio: $550.99', image: 'libro02.jpg'},
-        {id:2, rating: 5, title: 'Precio: $780.99', image: 'libro03.jpg'},
-        {id:3, rating: 5, title: 'Precio: $390.99', image: 'libro04.jpg'},
-        {id:4, rating: 5, title: 'Precio: $250.99', image: 'libro05.jpg'},
+        {id:0, rating: 4, title: 'Harry Potter y el Cáliz de Fuego', price: '$899.99', image: 'libro01.jpg'},
+        {id:1, rating: 3, title: 'The Shining', price: '$550.99', image: 'libro02.jpg'},
+        {id:2, rating: 5, title: 'El Código Da Vinci', price: '$740.99', image: 'libro03.jpg'},
+        {id:3, rating: 5, title: 'El Principíto', price: '$390.99', image: 'libro04.jpg'},
+        {id:4, rating: 5, title: 'Sobrenatural', price: '$250.99', image: 'libro05.jpg'},
       ],
       copyBooks: []
     };
@@ -33,6 +33,23 @@ class App extends React.Component{
 
   componentDidMount(){
     this.initBooks();
+  }
+
+  onSearch(query){
+    if(query === ''){
+      this.setState({copyBooks: [...this.state.books]});
+    }else{
+
+      const temp = [...this.state.books];
+      var res = [];
+      temp.forEach(item =>{
+        if(item.price.toLowerCase().indexOf(query) > -1){
+          res.push(item);
+        }
+      });
+    
+      this.setState({copyBooks: [...res]});
+    }
   }
 
   onSearch(query){
@@ -72,6 +89,7 @@ class App extends React.Component{
     var temp = [...this.state.books];
     const index = temp.findIndex(x => x.id === item.id);
     temp[index].title = item.title;
+    temp[index].price = item.price;
     temp[index].image = item.image;
     temp[index].rating = item.rating;
 

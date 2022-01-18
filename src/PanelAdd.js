@@ -7,6 +7,7 @@ class PanelAdd extends React.Component{
 
         this.state ={
             title: '',
+            price: '',
             image: '',
             rating: 1
         };
@@ -15,6 +16,7 @@ class PanelAdd extends React.Component{
         this.createItem = this.createItem.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
+        this.onChangePrice = this.onChangePrice.bind(this);
         this.onChangeRating = this.onChangeRating.bind(this);
     }
 
@@ -24,6 +26,10 @@ class PanelAdd extends React.Component{
 
     onChangeTitle(e){
         this.setState({title: e.target.value});
+        
+    }
+    onChangePrice(e){
+        this.setState({price: e.target.value});
         
     }
     onChangeImage(e){
@@ -37,9 +43,10 @@ class PanelAdd extends React.Component{
     createItem(e){
         e.preventDefault();
         const title = this.state.title;
+        const price = this.state.price;
         const image = this.state.image;
         const rating = this.state.rating;
-        this.props.onadd({title: title, image: image, rating: rating});
+        this.props.onadd({title: title, price: price, image: image, rating: rating});
         this.cancelAction();
     }
 

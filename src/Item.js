@@ -8,6 +8,7 @@ class Item extends React.Component{
 
         this.state = {
             title: '',
+            price: '',
             image: '',
             rating: 1,
             stars: []
@@ -21,6 +22,7 @@ class Item extends React.Component{
         this.setState({
             id: this.props.id,
             title: this.props.title,
+            price: this.props.price,
             image: this.props.image,
             rating: parseInt(this.props.rating),
             stars: Array(parseInt(this.props.rating)).fill(1)
@@ -39,7 +41,7 @@ class Item extends React.Component{
             stars: Array(parseInt(e.target.value)).fill(1)
         });
 
-        this.props.onupdaterating({id: this.state.id, title: this.state.title, image: this.state.image, rating: rating});
+        this.props.onupdaterating({id: this.state.id, title: this.state.title, price: this.state.title, image: this.state.image, rating: rating});
     }
 
     render(){
@@ -47,6 +49,7 @@ class Item extends React.Component{
             <div className="item">
                 <div className="image"><img src={'img/' + this.state.image} width="100%" /></div>
                 <div className="title">{this.state.title}</div>
+                <div className="price">{this.state.price}</div>
                 <div className="rating">
                     <p>
                     {this.state.stars.map(x =>
