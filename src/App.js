@@ -46,20 +46,6 @@ class App extends React.Component{
         if(item.price.toLowerCase().indexOf(query) > -1){
           res.push(item);
         }
-      });
-    
-      this.setState({copyBooks: [...res]});
-    }
-  }
-
-  onSearch(query){
-    if(query === ''){
-      this.setState({copyBooks: [...this.state.books]});
-    }else{
-
-      const temp = [...this.state.books];
-      var res = [];
-      temp.forEach(item =>{
         if(item.title.toLowerCase().indexOf(query) > -1){
           res.push(item);
         }
