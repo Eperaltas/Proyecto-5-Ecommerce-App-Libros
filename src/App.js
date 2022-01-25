@@ -55,11 +55,12 @@ class App extends React.Component{
     }
   }
 
-  addItem(item){
-    var temp = [...this.state.books];
+  addItem(usuario){
+
+      var temp = [...this.state.books];
     const id = temp[temp.length-1].id + 1;
-    item['id'] = id;
-    temp.push(item);
+    usuario['id'] = id;
+    temp.push(usuario);
     this.setState({books: [...temp]});
     this.initBooks();
   }

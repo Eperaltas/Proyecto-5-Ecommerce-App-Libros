@@ -36,7 +36,7 @@ class Menu extends React.Component{
                     </div>
                 </div>
                 {(this.state.newItemPanel)?
-                 <PanelAdd onhide={this.onCancel} onadd={this.props} />
+                 <PanelAdd onhide={this.onCancel} onadd={this.props.onadd} /> //* Anote el .onadd dentro del this.props. *//
                  : 
                  ''
                  }

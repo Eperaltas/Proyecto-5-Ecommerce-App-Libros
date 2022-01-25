@@ -57,32 +57,33 @@ class PanelAdd extends React.Component{
                     <form onSubmit={this.createItem}>
                     <p>
                         <label>Nombre completo</label><br />
-                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        <input type="text" name="NombreCompleto" className="input" onChange={this.onChangeNombreCompleto} />
                         </p>
 
                         <p>
                         <label>Apellido Paterno</label><br />
-                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        <input type="text" name="ApellidoPaterno" className="input" onChange={this.onChangeApellidoPaterno} />
                         </p>
 
                         <p>
                         <label>Apellido Materno</label><br />
-                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        <input type="text" name="ApellidoMaterno" className="input" onChange={this.onChangeApellidoMaterno} />
                         </p>
                         
                         <p>
                         <label>Correo electrónico</label><br />
-                        <input type="text" name="title" className="input" onChange={this.onChangeTitle} />
+                        <input type="text" name="CorreoElectronico" className="input" onChange={this.onChangeCorreoElectronico} />
                         </p>
+                        
 
                         <p>
                         <label>Crear contraseña</label><br />
-                        <input type="text" name="image" className="input" onChange={this.onChangeImage} />
+                        <input type="text" name="CrearContraseña" className="input" onChange={this.onChangeCrearContraseña} />
                         </p>
 
                         <p>
                         <label>Confirmar contraseña</label><br />
-                        <input type="text" name="image" className="input" onChange={this.onChangeImage} />
+                        <input type="text" name="ConfirmarContraseña" className="input" onChange={this.onChangeConfirmarContraseña} />
                         </p>
 
                         <input type="submit" className="button btn-blue" value="Crear cuenta" />
