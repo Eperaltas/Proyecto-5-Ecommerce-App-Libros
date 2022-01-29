@@ -1,23 +1,11 @@
 import React from 'react';
-
-class Search extends React.Component{
-
-    constructor(props){
-        super(props);
-
-        this.onChangeEvent = this.onChangeEvent.bind(this);
-    }
-
-    onChangeEvent(e){
-        const query = e.target.value.toString().toLowerCase();
-        this.props.onsearch(e.target.value);
-    }
-
-    render(){
-        return(
-            <input type="text" onChange={this.onChangeEvent} />
-        );
-    }
+const Search = ({ onsearch }) => {
+const onChangeEvent = (e) => {
+const query = e.target.value.toString().toLowerCase();
+onsearch(e.target.value);
 }
-
+return (
+<input type="text" onChange={onChangeEvent} />
+);
+}
 export default Search;

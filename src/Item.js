@@ -11,7 +11,7 @@ class Item extends React.Component{
             price: '',
             image: '',
             rating: 1,
-            stars: []
+            quantity: []
         }
 
         this.onremove = this.onremove.bind(this);
@@ -25,7 +25,7 @@ class Item extends React.Component{
             price: this.props.price,
             image: this.props.image,
             rating: parseInt(this.props.rating),
-            stars: Array(parseInt(this.props.rating)).fill(1)
+            quantity: Array(parseInt(this.props.rating)).fill(1)
         });
     }
 
@@ -38,7 +38,7 @@ class Item extends React.Component{
         const rating = parseInt(e.target.value)
         this.setState({
             rating: parseInt(e.target.value),
-            stars: Array(parseInt(e.target.value)).fill(1)
+            quantity: Array(parseInt(e.target.value)).fill(1)
         });
 
         this.props.onupdaterating({id: this.state.id, title: this.state.title, price: this.state.title, image: this.state.image, rating: rating});
@@ -52,7 +52,7 @@ class Item extends React.Component{
                 <div className="price">{this.state.price}</div>
                 <div className="rating">
                     <p>
-                    {this.state.stars.map(x =>
+                    {this.state.quantity.map(x =>
                     <img src='' width='' />
                     )}
                     </p>
