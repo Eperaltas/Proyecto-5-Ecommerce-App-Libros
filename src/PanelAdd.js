@@ -1,11 +1,11 @@
 import React from 'react';
 
-class PanelAdd extends React.Component{
+class PanelAdd extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
             title: '',
             price: '',
             image: '',
@@ -20,82 +20,71 @@ class PanelAdd extends React.Component{
         this.onChangeRating = this.onChangeRating.bind(this);
     }
 
-    cancelAction(e){
+    cancelAction(e) {
         this.props.onhide();
     }
 
-    onChangeTitle(e){
-        this.setState({title: e.target.value});
-        
+    onChangeTitle(e) {
+        this.setState({ title: e.target.value });
+
     }
-    onChangePrice(e){
-        this.setState({price: e.target.value});
-        
+    onChangePrice(e) {
+        this.setState({ price: e.target.value });
+
     }
-    onChangeImage(e){
-        this.setState({image: e.target.value});
+    onChangeImage(e) {
+        this.setState({ image: e.target.value });
     }
-    onChangeRating(e){
+    onChangeRating(e) {
         const rating = parseInt(e.target.value);
-        this.setState({rating: rating});
+        this.setState({ rating: rating });
     }
 
-    createItem(e){
+    createItem(e) {
         e.preventDefault();
         const title = this.state.title;
         const price = this.state.price;
         const image = this.state.image;
         const rating = this.state.rating;
-        this.props.onadd({title: title, price: price, image: image, rating: rating});
+        this.props.onadd({ title: title, price: price, image: image, rating: rating });
         this.cancelAction();
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="new-item-panel-container">
                 <div className="new-item-panel">
                     <form onSubmit={this.createItem}>
-                    <p>
-                        <label>Nombre completo</label><br />
-                        <input type="text" name="NombreCompleto" className="input" onChange={this.onChangeNombreCompleto} />
-                        </p>
-
                         <p>
-                        <label>Apellido Paterno</label><br />
-                        <input type="text" name="ApellidoPaterno" className="input" onChange={this.onChangeApellidoPaterno} />
-                        </p>
+                            <label>Nombre completo</label><br />
+                            <input type="text" name="firstname" className="input" />
 
-                        <p>
-                        <label>Apellido Materno</label><br />
-                        <input type="text" name="ApellidoMaterno" className="input" onChange={this.onChangeApellidoMaterno} />
-                        </p>
-                        
-                        <p>
-                        <label>Correo electrónico</label><br />
-                        <input type="text" name="CorreoElectronico" className="input" onChange={this.onChangeCorreoElectronico} />
-                        </p>
-                        
+                            <p>
+                                <label>Apellido Paterno</label><br />
+                                <input type="text" name="lastname" className="input" />
 
-                        <p>
-                        <label>Crear contraseña</label><br />
-                        <input type="text" name="CrearContraseña" className="input" onChange={this.onChangeCrearContraseña} />
-                        </p>
 
-                        <p>
-                        <label>Confirmar contraseña</label><br />
-                        <input type="text" name="ConfirmarContraseña" className="input" onChange={this.onChangeConfirmarContraseña} />
-                        </p>
+                                <p>
+                                    <label>Correo electrónico</label><br />
+                                    <input type="text" name="mail" className="input" />
 
-                        <input type="submit" className="button btn-blue" value="Crear cuenta" />
-                        <button className="button btn-normal" onClick={this.props.onhide}>Cancelar</button>
-                    </form>
-                </div>
-            </div>
-        );
+                                    <p>
+                                        <label>Crear contraseña</label><br />
+                                        <input type="password" name="password" className="input" />
+                                        <p>
+                                            <label>Confirmar contraseña</label><br />
+                                            <input type="password" name="password" className="input" />
+
+                                            <input type="submit" className="button btn-blue" value="Crear cuenta" />
+                                            <button className="button btn-normal" onClick={this.props.onhide}>Cancelar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                );
     }
 }
 
-export default PanelAdd;
+                                export default PanelAdd;
 
 /* <p>
                         <label>Precio</label><br />
