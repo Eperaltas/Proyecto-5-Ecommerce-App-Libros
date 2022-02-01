@@ -58,7 +58,7 @@ function Item({ id, title, price, image, rating, onremove, onupdaterating }) {
                 </select>
             </div>
             <div className="actions">
-                <button onClick={() => navigate(`/book/${id}`)}>Ver Info</button>
+                <button onClick={() => navigate(`/book/${id}`)}>Reseña del libro</button>
                 <button onClick={handleRemove}>Agregar al carrito</button>
             </div>
         </div>
