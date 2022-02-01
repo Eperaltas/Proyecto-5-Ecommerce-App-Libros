@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Menu from './Menu';
-import List from './List';
+import Layout from './components/Layout';
+import RouterComponent from './routes/RouterComponent'
 
 function App() {
   const [books, setBooks] = useState([
@@ -11,21 +11,23 @@ function App() {
     { id: 3, rating: 5, title: 'El Principíto', price: '$390.99', image: 'libro04.jpg' },
     { id: 4, rating: 5, title: 'Sobrenatural', price: '$250.99', image: 'libro05.jpg' },
   ]);
+
   const [copyBooks, setCopyBooks] = useState([])
+  const [token, setToken] = useState(null)
+
 
   const initBooks = () => {
     setCopyBooks([...books]);
   }
 
-  const welcome = async () => {
-    const resp = await axios.get('http://localhost:3001/v1');
-    console.log(resp.data)
-    }
-
   useEffect(() => {
     initBooks();
-    welcome();
+    setToken(localStorage.getItem('token'));
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('token', token);
+  }, [token]);
 
   const onSearch = (query) => {
     if (query === '') {
@@ -41,6 +43,7 @@ function App() {
           res.push(item);
         }
       });
+
       setCopyBooks([...res]);
     }
   }
@@ -53,6 +56,7 @@ function App() {
     setBooks([...temp]);
     initBooks();
   }
+
   const remove = (id) => {
     var temp = [...books];
     const res = temp.filter(item => item.id != id);
@@ -67,14 +71,17 @@ function App() {
     temp[index].price = item.price;
     temp[index].image = item.image;
     temp[index].rating = item.rating;
+
     setBooks([...temp]);
     initBooks();
   }
   return (
     <div className="app">
-      <Menu title="E-Books" onsearch={onSearch} onadd={addItem} />
-      <List className="list" items={copyBooks} onremove={remove} onupdaterating={updateRating} />
+      <Layout title="E-Books" onsearch={onSearch} onadd={addItem} token={token}>
+        <RouterComponent className="list" setToken={setToken} items={copyBooks} onremove={remove} onupdaterating={updateRating} copyBooks={copyBooks} />
+      </Layout>
     </div>
   );
 }
+
 export default App;
