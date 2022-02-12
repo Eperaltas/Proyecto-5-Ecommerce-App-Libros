@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Layout from './components/Layout';
-import RouterComponent from './routes/RouterComponent'
+import RouterComponent from './routes/RouterComponent';
+import { UserContext } from './context/UserContext';
+
+import { originalBooks } from './shared/utils';
 
 function App() {
-  const [books, setBooks] = useState([
-    { id: 0, rating: 4, title: 'Harry Potter y el Cáliz de Fuego', price: '$899.99', image: 'libro01.jpg' },
-    { id: 1, rating: 3, title: 'The Shining', price: '$550.99', image: 'libro02.jpg' },
-    { id: 2, rating: 5, title: 'El Código Da Vinci', price: '$740.99', image: 'libro03.jpg' },
-    { id: 3, rating: 5, title: 'El Principíto', price: '$390.99', image: 'libro04.jpg' },
-    { id: 4, rating: 5, title: 'Sobrenatural', price: '$250.99', image: 'libro05.jpg' },
-  ]);
+  const [books, setBooks] = useState(originalBooks);
 
-  const [copyBooks, setCopyBooks] = useState([])
-  const [token, setToken] = useState(null)
+  const [copyBooks, setCopyBooks] = useState([...books])
+
+  const { saveToken } = useContext(UserContext);
 
 
   const initBooks = () => {
@@ -21,13 +19,9 @@ function App() {
   }
 
   useEffect(() => {
-    initBooks();
-    setToken(localStorage.getItem('token'));
+    const haveToken = localStorage.getItem('token');
+    if (haveToken) saveToken(haveToken);
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('token', token);
-  }, [token]);
 
   const onSearch = (query) => {
     if (query === '') {
@@ -48,37 +42,21 @@ function App() {
     }
   }
 
-  const addItem = (usuario) => {
-    var temp = [...books];
-    const id = temp[temp.length - 1].id + 1;
-    usuario['id'] = id;
-    temp.push(usuario);
-    setBooks([...temp]);
-    initBooks();
-  }
-
-  const remove = (id) => {
-    var temp = [...books];
-    const res = temp.filter(item => item.id != id);
-    setBooks([...res]);
-    initBooks();
-  }
-
-  const updateRating = (item) => {
+  const updateQuantity = (item) => {
     var temp = [...books];
     const index = temp.findIndex(x => x.id === item.id);
     temp[index].title = item.title;
     temp[index].price = item.price;
     temp[index].image = item.image;
-    temp[index].rating = item.rating;
+    temp[index].quantity = item.quantity;
 
     setBooks([...temp]);
     initBooks();
   }
   return (
     <div className="app">
-      <Layout title="E-Books" onsearch={onSearch} onadd={addItem} token={token}>
-        <RouterComponent className="list" setToken={setToken} items={copyBooks} onremove={remove} onupdaterating={updateRating} copyBooks={copyBooks} />
+      <Layout title="E-Books" onsearch={onSearch}>
+        <RouterComponent className="list" onupdatequantity={updateQuantity} copyBooks={copyBooks} />
       </Layout>
     </div>
   );

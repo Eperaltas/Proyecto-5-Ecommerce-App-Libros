@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext'
 
-const Logout = ({ setToken }) => {
-  useEffect(() => {
-    setToken(null);
-    localStorage.clear()
-  });
+const Logout = () => {
+  const { clearToken } = useContext(UserContext);
+  useEffect(() => clearToken());
   return <Navigate to='/' />
 };
 

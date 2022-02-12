@@ -1,55 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { addHandler } from './shared/utils';
+import { UserContext } from './context/UserContext'
 import './Item.css';
 
-function Item({ id, title, price, image, rating, onremove, onupdaterating }) {
+function Item({ id, title, price, image, quantity, onupdatequantity = () => { } }) {
     const navigate = useNavigate();
     const [infoLibro, setInfoLibro] = useState({
         title: '',
         price: '',
         image: '',
-        rating: 1,
+        quantity: 1,
         stars: []
     });
 
+    const { user: { token } } = useContext(UserContext);
+
     useEffect(() => {
+
         setInfoLibro({
             id,
             title,
             price,
             image,
-            rating: parseInt(rating),
-            stars: Array(parseInt(rating)).fill(1)
+            quantity: parseInt(quantity),
+            stars: Array(parseInt(quantity)).fill(1)
         });
     }, [])
 
-    const handleRemove = (e) => {
-        onremove(id);
-    }
-
     const onChangeRating = (e) => {
-        const rating = parseInt(e.target.value)
+        const quantity = parseInt(e.target.value)
         setInfoLibro({
             ...infoLibro,
-            rating: parseInt(e.target.value),
+            quantity: parseInt(e.target.value),
             stars: Array(parseInt(e.target.value)).fill(1)
         });
 
-        onupdaterating({ id: infoLibro.id, title: infoLibro.title, price: infoLibro.title, image: infoLibro.image, rating: rating });
+        onupdatequantity({ id: infoLibro.id, title: infoLibro.title, price: infoLibro.title, image: infoLibro.image, quantity: quantity });
     }
     return (
         <div className="item">
-            <div className="image"><img src={'img/' + infoLibro.image} width="100%" /></div>
+            <div className="image"><img src={infoLibro.image} width="100%" /></div>
             <div className="title">{infoLibro.title}</div>
-            <div className="price">{infoLibro.price}</div>
-            <div className="rating">
-                <p>
-                    {infoLibro.stars.map((x, index) =>
-                        <img key={index} src={x.img} width='' />
-                    )}
-                </p>
+            <div className="price">${infoLibro.price}</div>
+            <div className="quantity">
                 Cantidad
-                <select value={infoLibro.rating} onChange={onChangeRating}>
+                <select value={infoLibro.quantity} onChange={onChangeRating} style={{ width: '80px', marginLeft: '20px', textAlign: 'right', padding: '2px 5px' }}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -58,8 +54,8 @@ function Item({ id, title, price, image, rating, onremove, onupdaterating }) {
                 </select>
             </div>
             <div className="actions">
-                <button onClick={() => navigate(`/book/${id}`)}>Reseña del libro</button>
-                <button onClick={handleRemove}>Agregar al carrito</button>
+                <button className="infoBtn" onClick={() => navigate(`/book/${id}`)}>Reseña del libro</button>
+                <button className="addBtn" onClick={() => { addHandler(id, token, navigate) }}>Agregar al carrito</button>
             </div>
         </div>
     );

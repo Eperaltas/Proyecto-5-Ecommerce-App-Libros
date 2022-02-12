@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Menu.css';
 import { Link } from 'react-router-dom';
 import Search from './Search';
 
-function Menu({ title, onsearch, token }) {
+import { UserContext } from './context/UserContext';
+
+function Menu({ title, onsearch }) {
+    const { user: { token } } = useContext(UserContext);
     return (
         <div className="container">
             <div className="subcontainer">
