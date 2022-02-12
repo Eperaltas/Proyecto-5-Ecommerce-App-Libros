@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/Proyecto-5-Ecommerce-App-Libros'>
       <UserProvider>
         <App />
       </UserProvider>
