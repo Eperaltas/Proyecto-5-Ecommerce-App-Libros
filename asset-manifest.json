@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Proyecto-5-Ecommerce-App-Libros/static/css/main.b3ee4cc4.css",
-    "main.js": "/Proyecto-5-Ecommerce-App-Libros/static/js/main.92d2e9a6.js",
+    "main.js": "/Proyecto-5-Ecommerce-App-Libros/static/js/main.103cac54.js",
     "static/js/787.644928fe.chunk.js": "/Proyecto-5-Ecommerce-App-Libros/static/js/787.644928fe.chunk.js",
     "index.html": "/Proyecto-5-Ecommerce-App-Libros/index.html",
     "main.b3ee4cc4.css.map": "/Proyecto-5-Ecommerce-App-Libros/static/css/main.b3ee4cc4.css.map",
-    "main.92d2e9a6.js.map": "/Proyecto-5-Ecommerce-App-Libros/static/js/main.92d2e9a6.js.map",
+    "main.103cac54.js.map": "/Proyecto-5-Ecommerce-App-Libros/static/js/main.103cac54.js.map",
     "787.644928fe.chunk.js.map": "/Proyecto-5-Ecommerce-App-Libros/static/js/787.644928fe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3ee4cc4.css",
-    "static/js/main.92d2e9a6.js"
+    "static/js/main.103cac54.js"
   ]
 }
